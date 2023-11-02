@@ -1,11 +1,18 @@
 package com.hj.jerry;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 @SpringBootApplication
-public class JerryApplication {
+@Slf4j
+public class JerryApplication implements CommandLineRunner {
 
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
 	public static void main(String[] args) {
 		SpringApplication.run(JerryApplication.class, args);
 		//TODO
@@ -17,4 +24,12 @@ public class JerryApplication {
 		 */
 	}
 
+	@Override
+	public void run(String... args) throws Exception {
+		log.info("init");
+
+		jdbcTemplate.execute("DROP TABLE customers IF EXISTS");
+		jdbcTemplate.execute("CREATE TABLE customers(" +
+				"id SERIAL, first_name VARCHAR(255), last_name VARCHAR(255))");
+	}
 }
