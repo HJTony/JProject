@@ -28,8 +28,8 @@ public class JerryApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		log.info("init");
 
-		jdbcTemplate.execute("DROP TABLE customers IF EXISTS");
-		jdbcTemplate.execute("CREATE TABLE customers(" +
+		jdbcTemplate.execute("DROP TABLE users IF EXISTS");
+		jdbcTemplate.execute("CREATE TABLE users(" +
 				"id SERIAL, first_name VARCHAR(255), last_name VARCHAR(255))");
 	}
 }

@@ -1,6 +1,6 @@
 package com.hj.jerry.controller;
 
-import com.hj.jerry.VO.Customer;
+import com.hj.jerry.VO.User;
 import com.hj.jerry.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,14 +13,14 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/user")
-    public ResponseEntity<Customer> createUser(@RequestBody Customer customer) {
-        userService.createUser(customer);
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        userService.createUser(user);
         return ResponseEntity.ok().build();
     }
 
     @GetMapping("/search")
-    public ResponseEntity<Customer> searchUser(@RequestBody Customer customer) {
-        Customer responseCustomer = userService.searchUser(customer);
-        return ResponseEntity.ok(responseCustomer);
+    public ResponseEntity<User> searchUser(@RequestBody User user) {
+        User responseUser = userService.searchUser(user);
+        return ResponseEntity.ok(responseUser);
     }
 }

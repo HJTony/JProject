@@ -7,10 +7,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Customer {
+public class User {
     private long id;
     private String firstName;
     private String lastName;
+    private String email;
 
     @Override
     public String toString() {
