@@ -15,7 +15,12 @@ public class UserService {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    private UserRepositoy userRepositoy;
+
+    private final UserRepositoy userRepositoy;
+
+    public UserService(UserRepositoy userRepositoy) {
+        this.userRepositoy = userRepositoy;
+    }
 
     public Long join(User user) {
         userRepositoy.findByEmail(user.getEmail())
