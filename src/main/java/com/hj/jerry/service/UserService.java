@@ -33,7 +33,7 @@ public class UserService {
 
 
     public List<User> findMembers() {
-        return null;
+        return userRepositoy.findAll();
     }
 
     public User findOne(Long userId) {
