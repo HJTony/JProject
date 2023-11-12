@@ -1,9 +1,11 @@
 package com.hj.jerry.repository;
 
 import com.hj.jerry.domain.User;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@Repository
 public class MemoryUserRepository implements UserRepositoy {
 
     private static Map<Long, User> userMap = new HashMap<>();
