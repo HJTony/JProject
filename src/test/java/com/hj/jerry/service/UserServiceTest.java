@@ -10,8 +10,8 @@ import java.util.List;
 
 class UserServiceTest {
 
-    private MemoryUserRepository memoryUserRepository = new MemoryUserRepository();
-    private UserService userService = new UserService(memoryUserRepository);
+    MemoryUserRepository memoryUserRepository = new MemoryUserRepository();
+    UserService userService = new UserService(memoryUserRepository);
 
     @AfterEach
     void afterEach() {
@@ -35,15 +35,15 @@ class UserServiceTest {
     }
 
     @Test
-    void joinWithDuplication() {
-        User user1 = new User();
-        User user2 = new User();
-        user1.setEmail("test1@gmail.com");
-        user2.setEmail("test1@gmail.com");
+    void joinWithDuplicate() {
+        User user = new User();
+        User duplicate = new User();
+        user.setEmail("user1@gmail.com");
+        duplicate.setEmail("user1@gmail.com");
 
-        userService.join(user1);
-        Assertions.assertThrows(IllegalStateException.class, () -> userService.join(user2));
+        userService.join(user);
 
+        Assertions.assertThrows(IllegalStateException.class, () -> userService.join(duplicate));
     }
 
     @Test

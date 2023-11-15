@@ -2,7 +2,6 @@ package com.hj.jerry.repository;
 
 import com.hj.jerry.domain.User;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.*;
 
@@ -42,6 +41,6 @@ public class MemoryUserRepository implements UserRepositoy {
 
     public void clearStore() {
         userMap.clear();
-        sequence=0;
+        sequence = 0;
     }
 }
