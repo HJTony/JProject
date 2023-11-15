@@ -12,11 +12,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class MemoryUserRepositoryTest {
 
-    MemoryUserRepository userRepositoy = new MemoryUserRepository();
+    MemoryUserRepository userRepository = new MemoryUserRepository();
 
     @AfterEach
     void afterEach() {
-        userRepositoy.clearStore();
+        userRepository.clearStore();
     }
 
     @Test
@@ -26,10 +26,10 @@ class MemoryUserRepositoryTest {
         u1.setName("user1");
         u2.setName("user2");
 
-        userRepositoy.save(u1);
-        userRepositoy.save(u2);
+        userRepository.save(u1);
+        userRepository.save(u2);
 
-        List<User> userList = userRepositoy.findAll();
+        List<User> userList = userRepository.findAll();
 
         boolean result = userList.containsAll(Arrays.asList(u1,u2));
 
@@ -43,10 +43,10 @@ class MemoryUserRepositoryTest {
         u1.setName("user1");
         u2.setName("user2");
 
-        userRepositoy.save(u1);
-        userRepositoy.save(u2);
+        userRepository.save(u1);
+        userRepository.save(u2);
 
-        List<User> userList = userRepositoy.findAll();
+        List<User> userList = userRepository.findAll();
 
         assertEquals(2, userList.size());
     }
@@ -57,9 +57,9 @@ class MemoryUserRepositoryTest {
         String userName = "user1";
         u1.setName(userName);
 
-        userRepositoy.save(u1);
+        userRepository.save(u1);
 
-        User result = userRepositoy.findById(1L).get();
+        User result = userRepository.findById(1L).get();
 
         assertEquals(result.getId(), 1L);
     }
@@ -70,9 +70,9 @@ class MemoryUserRepositoryTest {
         String userName = "user1";
         u1.setName(userName);
 
-        userRepositoy.save(u1);
+        userRepository.save(u1);
 
-        User result = userRepositoy.findByName(userName).get();
+        User result = userRepository.findByName(userName).get();
 
         assertEquals(result.getName(), userName);
     }
@@ -85,9 +85,9 @@ class MemoryUserRepositoryTest {
         u1.setName(userName);
         u1.setEmail(email);
 
-        userRepositoy.save(u1);
+        userRepository.save(u1);
 
-        User result = userRepositoy.findByEmail(email).get();
+        User result = userRepository.findByEmail(email).get();
 
         assertEquals(result.getEmail(), email);
     }
